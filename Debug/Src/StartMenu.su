@@ -1,0 +1,4 @@
+StartMenu.c:3:6:startWindow	40	static
+StartMenu.c:29:6:spaceship	32	static
+StartMenu.c:41:6:playerInShip	16	static
+StartMenu.c:86:6:playerInSpace	16	static
