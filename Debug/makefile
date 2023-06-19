@@ -34,34 +34,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := BaseProject
+BUILD_ARTIFACT_NAME := ExercisesEx0
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-BaseProject.elf \
+ExercisesEx0.elf \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-BaseProject.list \
+ExercisesEx0.list \
 
 OBJCOPY_BIN += \
-BaseProject.bin \
+ExercisesEx0.bin \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: BaseProject.elf secondary-outputs
+main-build: ExercisesEx0.elf secondary-outputs
 
 # Tool invocations
-BaseProject.elf: $(OBJS) $(USER_OBJS) C:\Users\Emilo\OneDrive\Skrivebord\Game\STM32F302R8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "BaseProject.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Emilo\OneDrive\Skrivebord\Game\STM32F302R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BaseProject.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+ExercisesEx0.elf: $(OBJS) $(USER_OBJS) C:/Users/mikke/OneDrive/Documents/Skole/Programmeringsprojekt/BaseProject/STM32F302R8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "ExercisesEx0.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:/Users/mikke/OneDrive/Documents/Skole/Programmeringsprojekt/BaseProject/STM32F302R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ExercisesEx0.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -70,19 +70,19 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-BaseProject.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "BaseProject.list"
+ExercisesEx0.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "ExercisesEx0.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-BaseProject.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "BaseProject.bin"
+ExercisesEx0.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "ExercisesEx0.bin"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) BaseProject.bin BaseProject.elf BaseProject.list default.size.stdout
+	-$(RM) ExercisesEx0.bin ExercisesEx0.elf ExercisesEx0.list default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_BIN)

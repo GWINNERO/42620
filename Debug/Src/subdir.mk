@@ -6,12 +6,19 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../Src/30010_io.c \
-../Src/GameScreen.c \
 ../Src/Joystick.c \
+../Src/LCD.c \
+../Src/LCDgameplay.c \
 ../Src/LED.c \
-../Src/ansi_S.c \
+../Src/LUTsin.c \
+../Src/Vector.c \
+../Src/Window.c \
+../Src/ansi.c \
+../Src/ball.c \
+../Src/buzzer.c \
+../Src/charset.c \
 ../Src/main.c \
-../Src/rocet.c \
+../Src/menu.c \
 ../Src/syscalls.c \
 ../Src/sysmem.c \
 ../Src/system_stm32f30x.c \
@@ -19,12 +26,19 @@ C_SRCS += \
 
 OBJS += \
 ./Src/30010_io.o \
-./Src/GameScreen.o \
 ./Src/Joystick.o \
+./Src/LCD.o \
+./Src/LCDgameplay.o \
 ./Src/LED.o \
-./Src/ansi_S.o \
+./Src/LUTsin.o \
+./Src/Vector.o \
+./Src/Window.o \
+./Src/ansi.o \
+./Src/ball.o \
+./Src/buzzer.o \
+./Src/charset.o \
 ./Src/main.o \
-./Src/rocet.o \
+./Src/menu.o \
 ./Src/syscalls.o \
 ./Src/sysmem.o \
 ./Src/system_stm32f30x.o \
@@ -32,12 +46,19 @@ OBJS += \
 
 C_DEPS += \
 ./Src/30010_io.d \
-./Src/GameScreen.d \
 ./Src/Joystick.d \
+./Src/LCD.d \
+./Src/LCDgameplay.d \
 ./Src/LED.d \
-./Src/ansi_S.d \
+./Src/LUTsin.d \
+./Src/Vector.d \
+./Src/Window.d \
+./Src/ansi.d \
+./Src/ball.d \
+./Src/buzzer.d \
+./Src/charset.d \
 ./Src/main.d \
-./Src/rocet.d \
+./Src/menu.d \
 ./Src/syscalls.d \
 ./Src/sysmem.d \
 ./Src/system_stm32f30x.d \
@@ -46,12 +67,12 @@ C_DEPS += \
 
 # Each subdirectory must supply rules for building sources it contributes
 Src/%.o: ../Src/%.c Src/subdir.mk
-	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32 -DSTM32F302R8Tx -DSTM32F3 -DNUCLEO_F302R8 -DDEBUG -DUSE_STDPERIPH_DRIVER=1 -c -I"C:/Users/Emilo/OneDrive/Skrivebord/Game/SPL/inc" -I"C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc" -I"C:/Users/Emilo/OneDrive/Skrivebord/Game/cmsis" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32 -DSTM32F302R8Tx -DSTM32F3 -DNUCLEO_F302R8 -DDEBUG -DUSE_STDPERIPH_DRIVER=1 -c -I"C:/Users/mikke/OneDrive/Documents/Skole/Programmeringsprojekt/BaseProject/SPL/inc" -I"C:/Users/mikke/OneDrive/Documents/Skole/Programmeringsprojekt/BaseProject/Inc" -I"C:/Users/mikke/OneDrive/Documents/Skole/Programmeringsprojekt/BaseProject/cmsis" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 
 clean: clean-Src
 
 clean-Src:
-	-$(RM) ./Src/30010_io.d ./Src/30010_io.o ./Src/GameScreen.d ./Src/GameScreen.o ./Src/Joystick.d ./Src/Joystick.o ./Src/LED.d ./Src/LED.o ./Src/ansi_S.d ./Src/ansi_S.o ./Src/main.d ./Src/main.o ./Src/rocet.d ./Src/rocet.o ./Src/syscalls.d ./Src/syscalls.o ./Src/sysmem.d ./Src/sysmem.o ./Src/system_stm32f30x.d ./Src/system_stm32f30x.o ./Src/timer.d ./Src/timer.o
+	-$(RM) ./Src/30010_io.d ./Src/30010_io.o ./Src/Joystick.d ./Src/Joystick.o ./Src/LCD.d ./Src/LCD.o ./Src/LCDgameplay.d ./Src/LCDgameplay.o ./Src/LED.d ./Src/LED.o ./Src/LUTsin.d ./Src/LUTsin.o ./Src/Vector.d ./Src/Vector.o ./Src/Window.d ./Src/Window.o ./Src/ansi.d ./Src/ansi.o ./Src/ball.d ./Src/ball.o ./Src/buzzer.d ./Src/buzzer.o ./Src/charset.d ./Src/charset.o ./Src/main.d ./Src/main.o ./Src/menu.d ./Src/menu.o ./Src/syscalls.d ./Src/syscalls.o ./Src/sysmem.d ./Src/sysmem.o ./Src/system_stm32f30x.d ./Src/system_stm32f30x.o ./Src/timer.d ./Src/timer.o
 
 .PHONY: clean-Src
 

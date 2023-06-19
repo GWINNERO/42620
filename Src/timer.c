@@ -1,110 +1,173 @@
-//#include "ansi_S.h"
-//#include "timer.h"
-//
-////TIM15->CR1 to disable the timer and configure the mode.
-////TIM15->ARR to set the reload value.
-////TIM15->PSC to set the prescaler.
-//// Write to TIM15->CR1 to enable the timer and begin counting
-//
-//void initTimer(){
-//RCC->APB2ENR |= RCC_APB2Periph_TIM15; // Enable clock line to timer 15;
-//TIM15->CR1 = 0x0000; // Configure timer 15
-//TIM15->ARR = 0xF9FF; // Set reload value
-//TIM15->PSC = 0x0009; // Set prescale value
-//TIM15->DIER |= 0x0001; // Enable timer 15 interrupts
-//TIM15->CR1 = 0x0001;
-//NVIC_SetPriority(TIM1_BRK_TIM15_IRQn, 0); // Set interrupt priority
-//NVIC_EnableIRQ(TIM1_BRK_TIM15_IRQn); // Enable interrupt
-//}
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//void initTimer2(){
-//RCC->APB1ENR |= RCC_APB1Periph_TIM2; // Enable clock line to timer 2;TIM15->CR1 = 0x0000; // Configure timer 15
-//TIM2->CR1 = 0x0000;
-//TIM2->ARR = 0xF9FF; // Set reload value
-//TIM2->PSC = 0x0009; // Set prescale value
-//TIM2->DIER |= 0x0001;
-//
-//
-//TIM2->CCER &= ~TIM_CCER_CC3P; // Clear CCER register
-//TIM2->CCER |= 0x00000001 << 8; // Enable OC3 output
-//TIM2->CCMR2 &= ~TIM_CCMR2_OC3M; // Clear CCMR2 register
-//TIM2->CCMR2 &= ~TIM_CCMR2_CC3S;
-//TIM2->CCMR2 |= TIM_OCMode_PWM1; // Set output mode to PWM1
-//TIM2->CCMR2 &= ~TIM_CCMR2_OC3PE;
-//TIM2->CCMR2 |= TIM_OCPreload_Enable;
-//TIM2->CCR3 = 0xF9FF / 2; // Set duty cycle to 50 %
-//
-//
-//
-//NVIC_SetPriority(TIM2_IRQn, 1); // Set interrupt priority
-//NVIC_EnableIRQ(TIM2_IRQn); // Enable interrupt
-//
-//TIM2->CR1 = 0x0001;
-//}
-//
-//void initBuzz(){
-//	// Set pin PA9 to output - BLUE LED
-//	GPIOB->OSPEEDR &= ~(0x00000003 << (10 * 2)); // Clear speed register
-//	GPIOB->OSPEEDR |= (0x00000002 << (10 * 2)); // set speed register
-//	// 0x01 - 10  Hz
-//	// 0x02 - 2 MHz
-//	// 0x03 - 50 MHz
-//	GPIOB->OTYPER &= ~(0x0001 << (10 * 1)); // Clear output type register
-//	GPIOB->OTYPER |= (0x0000 << (10)); // Set output type register
-//	// 0x00 - Push pull
-//	// 0x01 - Open drain
-//	GPIOB->MODER &= ~(0x00000003 << (10 * 2)); // Clear mode register
-//	GPIOB->MODER |= (0x00000002 << (10 * 2)); // Set mode register
-//	// 0x00 – Input
-//	// 0x01 - Output
-//	// 0x02 - Alternate Function
-//	// 0x03 - Analog in/out
-//
-//	GPIO_PinAFConfig(GPIOB, GPIO_PinSource10, GPIO_AF_1);
-//}
-//
-//
-//
-//void setFreq(uint16_t freq) {
-//uint32_t reload = 64e6 / freq / (9 + 1) - 1;
-//TIM2->ARR = reload; // Set auto reload value
-//TIM2->CCR3 = reload/2; // Set compare register
-//TIM2->EGR |= 0x01;
-//}
-//
-//void TIM2_IRQHandler(void) {
-//
-//
-////Do whatever you want here, but make sure it doesn’t take too much Time.
-//TIM2->SR &= ~0x0001; // Clear interrupt bit
-//}
-//
-//
-//void TIM1_BRK_TIM15_IRQHandler(void) {
-//
-//	lcdUpdate++;
-//
-//		if (lcdUpdate >= refreshRate){
-//			if (led.blu == 0){
-//				led.blu = 1;
-//			}
-//			else if (led.blu == 1){
-//				led.blu = 0;
-//			}
-//			lcdUpdate = 0;
-//		}
-//
-//
-//
-////Do whatever you want here, but make sure it doesn’t take too much Time.
-//TIM15->SR &= ~0x0001; // Clear interrupt bit
-//}
-//
+#include "ansi.h"
+#include "stm32f30x_conf.h"
+#include "timer.h"
+
+
+void initTimer(){
+
+	RCC->APB2ENR |= RCC_APB2Periph_TIM15; // Enable clock line to timer 15;
+	TIM15->CR1 	= 0x0001; // Configure timer 15
+	TIM15->ARR 	= 0xF9FF; // Set reload value
+	TIM15->PSC 	= 0x0009; // Set prescale value
+	TIM15->DIER	|= 0x0001;
+	TIM15->SR	= 0x0000;
+	NVIC_SetPriority(TIM1_BRK_TIM15_IRQn, 0); // Set interrupt priority
+	NVIC_EnableIRQ(TIM1_BRK_TIM15_IRQn); // Enable interrupt
+}
+
+
+void TIM1_BRK_TIM15_IRQHandler(void) {
+	/*if(t.state){
+	t.ml++;
+	}
+
+	if (t.ml == 100){
+		t.ml = 0;
+		t.sk++;
+	}
+	if (t.sk == 60) {
+		t.sk = 0;
+		t.mn++;
+	}
+	if (t.mn == 60) {
+		t.mn = 0;
+		t.hr++;
+	}*/
+
+	lcdUpdate++;
+
+	if (lcdUpdate >= refreshRate){
+
+	if (led.blu == 0){
+		led.blu = 1;
+	}
+	else if (led.blu == 1){
+		led.blu = 0;
+	}
+
+	lcdUpdate = 0;
+	}
+
+
+TIM15->SR &= ~0x0001; // Clear interrupt bit
+}
+
+void drawTime(){
+	int a = t.ml;
+	int b = t.sk;
+	int c = t.mn;
+	int d = t.hr;
+
+	int x1 = 10, y1 = 10, x2 = 60, y2 = x1+5;
+
+	gotoxy(x1+21,y1+2);
+	printf("%01d:%02d:%02d.%02d", d, c, b, a);
+
+
+
+}
+
+
+
+void windowTimer() {
+
+	int x1 = 10;
+	int y1 = 10;
+	int x2 = 43;
+	int y2 = x1+5;
+
+	char s[] = "Stop Watch";
+	char l1[] = "Time since start:";
+	char l2[] = "Split time 1:";
+	char l3[] = "split time 2:";
+
+	char *arrl[] = {"Time since start:", "Split time 1:", "Split time 1:"};
+
+	int length = strlen(s);
+
+	int tl = 218; 	// ┌
+	int lsd = 180; 	// ┤
+	int bl = 192;	// └
+	int wll = 179;	// │
+	int btt = 196; 	// ─
+	int tr = 191; 	// ┐
+	int rsd = 195;	// ├
+	int br = 217;	// ┘
+
+	if (x2 < length + 6 | x2 < y1) {
+		x2 = x1 + length + 6;
+	}
+	if (y2 < y1) {
+		y2 = y1 + 1;
+	}
+
+	blink(0);
+	//Debug
+	//printf("\n\nx1:%d, y1:%d\nx2:%d, y2:%d\nString:%s Len:%d\n", x1, y1, x2, y2,s, length);
+
+
+	//Top ┌┤ Text ├┐
+	gotoxy(x1, y1);
+	printf("%c%c", tl, lsd);
+	blink(1);
+		printf("%c%s%c", 32, s, 32);
+		for (int i = x1; i < x2 - length - 6; i++) {
+			printf("%c", 32);
+		}
+	blink(0);
+	printf("%c%c\n", rsd, tr);
+
+	//Mid │        │
+	for (int i = y1+1; i < y2; i++) {
+		gotoxy(x1, i);
+		printf("%c", wll);
+		gotoxy(x2-1,i);
+		printf("%c", wll);
+	}
+
+	//Bottom  └─────────┘
+	gotoxy(x1,y2);
+	printf("%c", bl);
+	for (int i=x1; i < x2-2; i++){
+		printf("%c", btt);
+	}
+	printf("%c\n", br);
+
+
+	for(int i = 0; i<=2;i++){
+		gotoxy(x1+2, y1+2+i);
+		printf("%s", arrl[i]);
+
+		gotoxy(x1+21,y1+2+i);
+		printf("-:--:--.--");
+	}
+
+}
+
+
+void splitTime1(int i){
+	int a = t.ml;
+	int b = t.sk;
+	int c = t.mn;
+	int d = t.hr;
+
+
+	int x1 = 10, y1 = 10, x2 = 60, y2 = x1+5;
+
+		gotoxy(x1+21,y1+2+i);
+		printf("%01d:%02d:%02d.%02d", d, c, b, a);
+}
+
+void resetTime(){
+	t.ml = 0;
+	t.sk = 0;
+	t.mn = 0;
+	t.hr = 0;
+}
+
+
+
+
+
+
+

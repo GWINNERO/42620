@@ -1,5 +1,5 @@
 #include "stm32f30x_conf.h" // STM32 config
-#include "ansi_S.h"
+#include "ansi.h"
 #include "joystick.h"
 
 void intiJoystick(){
@@ -82,6 +82,7 @@ void intiJoystick(){
 
 
 int16_t readJoystick(){
+
 	int32_t a = GPIOC->IDR & (0x0001 << 0); //Read from pin PCx - right
 	int32_t b = GPIOA->IDR & (0x0001 << 4); //Read from pin PCx - up
 	int32_t c = GPIOB->IDR & (0x0001 << 5); //Read from pin PCx - center
@@ -98,16 +99,5 @@ int16_t readJoystick(){
 	joy.center	= c;
 	joy.left	= d;
 	joy.down 	= e;
+
 }
-
-void copyJoystick() {
-	CJoy.up = joy.up;
-	CJoy.down = joy.down;
-	CJoy.left = joy.left;
-	CJoy.right = joy.right;
-	CJoy.center = joy.center;
-}
-
-
-
-
