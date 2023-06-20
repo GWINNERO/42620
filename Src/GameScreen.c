@@ -656,6 +656,23 @@ void goDuckUP1(int play,int x, int y, int *ud, int *rl,duck_t * D){
 	D->rl = x+1+*rl-23;
 }
 
+void goDuckUPMove1(int play,int x, int y, int *ud, int *rl,duck_t * D) {
+	if (joy.up){
+		playerInSpaceR(play,x+*rl,y+*ud);
+		playerDelete(play,x+*rl,y+*ud);
+		(*ud)--;
+		playerInSpaceR(play,x+1+*rl,y+*ud);
+		}
+	if (joy.down){
+		playerInSpaceR(play,x+*rl,y+*ud);
+		playerDelete(play,x+*rl,y+*ud);
+		(*ud)++;
+		playerInSpaceR(play,x+1+*rl,y+*ud);
+		}
+	D->ud = *ud;
+}
+
+
 void goDuckUP2(int play,int x, int y, int *ud, int *rl,duck_t * D){
 
 	if (key.up && D->ud >-21){
@@ -684,6 +701,15 @@ void goDuckUP2(int play,int x, int y, int *ud, int *rl,duck_t * D){
 	}
 	D->ud = *ud;
 	D->rl = x+1+*rl-23;
+}
+void goDuckUPMove2(int play,int x, int y, int *ud, int *rl,duck_t * D){
+	if (key.down){
+	playerInSpaceR(play,x+*rl,y+*ud);
+	playerDelete(play,x+*rl,y+*ud);
+	(*ud)++;
+	playerInSpaceR(play,x+1+*rl,y+*ud);
+	}
+	D->ud = *ud;
 }
 
 void goDuckMID1(int play,int x, int y, int *ud, int *rl,duck_t * D){
@@ -745,6 +771,21 @@ void goDuckMID2(int play,int x, int y, int *ud, int *rl,duck_t * D){
 	D->ud = *ud;
 	D->rl = x+1+*rl-23;
 }
+void goDuckMIDMove2(int play,int x, int y, int *ud, int *rl,duck_t * D){
+	if (key.up){
+		playerInShipR(play,x+*rl,y+*ud);
+		playerDelete(play,x+*rl,y+*ud);
+		(*ud)--;
+		playerInShipR(play,x+1+*rl,y+*ud);
+		}
+	if (key.down){
+	playerInShipR(play,x+*rl,y+*ud);
+	playerDelete(play,x+*rl,y+*ud);
+	(*ud)++;
+	playerInShipR(play,x+1+*rl,y+*ud);
+	}
+	D->ud = *ud;
+}
 
 void goDuckUSD1(int play,int x, int y, int *ud, int *rl,duck_t * D){
 
@@ -804,6 +845,21 @@ void goDuckUSD2(int play,int x, int y, int *ud, int *rl,duck_t * D){
 	}
 	D->ud = *ud;
 	D->rl = x+1+*rl-23;
+}
+void goDuckUSDMove2(int play,int x, int y, int *ud, int *rl,duck_t * D){
+	if (key.up || joy.up){
+	playerInSpaceUSDR(play,x+*rl,y+*ud);
+	playerDelete(play,x+*rl,y+*ud);
+	(*ud)--;
+	playerInSpaceUSDR(play,x+1+*rl,y+*ud);
+	}
+	if (key.down || joy.down){
+	playerInSpaceUSDR(play,x+*rl,y+*ud);
+	playerDelete(play,x+*rl,y+*ud);
+	(*ud)++;
+	playerInSpaceUSDR(play,x+1+*rl,y+*ud);
+	}
+	D->ud = *ud;
 }
 
 void fat(int state) {

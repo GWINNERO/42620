@@ -46,14 +46,22 @@ int main(void)
 		fire(2,27+SS.ud,91,31+SS.ud);
 
 		if(duck1.ud == SS.ud) {
-		goDuckUP1(1,22,24,&ud1,&lr1,&duck1);
-		if(duck1.rl == 5 && duck2.ud == SS.ud && joy.up){
-		key.up = 1;
-		goDuckUP2(2,22,24,&ud2,&lr2,&duck2);
-		key.up = 0;
-		ud2 = 0, lr2 = 0;
-		duck2.ud = SS.ud;
-		}
+			goDuckUP1(1,22,24,&ud1,&lr1,&duck1);
+			if (duck1.rl == 5 && duck2.ud == SS.ud && joy.up){
+				key.up = 1;
+				goDuckUP2(2,22,24,&ud2,&lr2,&duck2);
+				key.up = 0;
+			}
+			if (duck1.rl == 5 && duck2.ud == SS.ud + 4 && joy.up){
+				key.up = 1;
+				goDuckMIDMove2(2,22,24,&ud2,&lr2,&duck2);
+				key.up = 0;
+			}
+			if (duck1.rl == 5 && duck2.ud == SS.ud + 8 && joy.up){
+				key.up = 1;
+				goDuckUSDMove2(2,22,24,&ud2,&lr2,&duck2);
+				key.up = 0;
+			}
 		}
 
 		if(duck1.ud == SS.ud + 4 || duck1.ud == SS.ud - 4){
@@ -65,13 +73,27 @@ int main(void)
 
 		if(duck1.ud == SS.ud+8) {
 		goDuckUSD1(1,22,24,&ud1,&lr1,&duck1);
+		if (duck1.rl == 5 && duck2.ud == SS.ud && joy.up){
+			key.down = 1;
+			goDuckUPMove2(2,22,24,&ud2,&lr2,&duck2);
+			key.down = 0;
+		}
+		if (duck1.rl == 5 && duck2.ud == SS.ud + 4 && joy.up){
+			key.down = 1;
+			goDuckMIDMove2(2,22,24,&ud2,&lr2,&duck2);
+			key.down = 0;
+		}
+		if (duck1.rl == 5 && duck2.ud == SS.ud + 8 && joy.up){
+			key.down = 1;
+			goDuckUSDMove2(2,22,24,&ud2,&lr2,&duck2);
+			key.down = 0;
+		}
 		}
 
 		if(duck1.rl == 5 && joy.up && !CJoy.up && SS.ud == duck1.ud+1 & SS.ud != -20){
 		spaceshipDelete(2,27+SS.ud,91,31+SS.ud);
 		fireDelete(2,27+SS.ud,91,31+SS.ud);
 		SS.ud -= 1;
-		duck2.ud = duck2.ud+SS.ud;
 		spaceship(2,27+SS.ud,91,31+SS.ud);
 		}
 
@@ -79,39 +101,53 @@ int main(void)
 		spaceshipDelete(2,27+SS.ud,91,31+SS.ud);
 		fireDelete(2,27+SS.ud,91,31+SS.ud);
 		SS.ud += 1;
-		duck2.ud = duck2.ud+SS.ud;
 		spaceship(2,27+SS.ud,91,31+SS.ud);
 		}
 
-		if (joy.up && duck1.rl != 5 && duck1.ud == SS.ud -1) {
-		duckExplotion(22,24,&ud1,&lr1);
-		playerInSpaceR(1,23,24);
-		ud1 = 0;
-		lr1 = 0;
-		duck1.ud = 0;
-		duck1.rl = 0;
-		}
-		if (duck1.rl == 65){
-		duckExplotion(22,24,&ud1,&lr1);
-		playerInSpaceR(1,23,24);
-		ud1 = 0;
-		lr1 = 0;
-		duck1.ud = 0;
-		duck1.rl = 0;
-		}
-		if (joy.up && duck1.rl != 5 && duck1.ud == SS.ud +9) {
-		duckExplotion(22,24,&ud1,&lr1);
-		playerInSpaceR(1,23,24);
-		ud1 = 0;
-		lr1 = 0;
-		duck1.ud = 0;
-		duck1.rl = 0;
-		}
+//		if (joy.up && duck1.rl != 5 && duck1.ud == SS.ud -1) {
+//		duckExplotion(22,24,&ud1,&lr1);
+//		playerInSpaceR(1,23,24);
+//		ud1 = 0;
+//		lr1 = 0;
+//		duck1.ud = 0;
+//		duck1.rl = 0;
+//		}
+//		if (duck1.rl == 65){
+//		duckExplotion(22,24,&ud1,&lr1);
+//		playerInSpaceR(1,23,24);
+//		ud1 = 0;
+//		lr1 = 0;
+//		duck1.ud = 0;
+//		duck1.rl = 0;
+//		}
+//		if (joy.up && duck1.rl != 5 && duck1.ud == SS.ud +9) {
+//		duckExplotion(22,24,&ud1,&lr1);
+//		playerInSpaceR(1,23,24);
+//		ud1 = 0;
+//		lr1 = 0;
+//		duck1.ud = 0;
+//		duck1.rl = 0;
+//		}
 
 
 
 		if(duck2.ud == SS.ud) {
 		goDuckUP2(2,22,24,&ud2,&lr2,&duck2);
+		if (duck2.rl == 5 && duck1.ud == SS.ud && key.up){
+			joy.up = 1;
+			goDuckUPMove1(1,22,24,&ud1,&lr1,&duck1);
+			joy.up = 0;
+		}
+		if (duck2.rl == 5 && duck1.ud == SS.ud + 4 && key.up){
+			joy.up = 1;
+			goDuckMIDMove2(1,22,24,&ud1,&lr1,&duck1);
+			joy.up = 0;
+		}
+		if (duck2.rl == 5 && duck1.ud == SS.ud + 8 && key.up){
+			joy.up = 1;
+			goDuckUSDMove2(1,22,24,&ud1,&lr1,&duck1);
+			joy.up = 0;
+		}
 		}
 
 		if(duck2.ud == SS.ud + 4 || duck2.ud == SS.ud - 4){
@@ -123,13 +159,27 @@ int main(void)
 
 		if(duck2.ud == SS.ud+8) {
 		goDuckUSD2(2,22,24,&ud2,&lr2,&duck2);
+		if (duck2.rl == 5 && duck1.ud == SS.ud && key.up){
+			joy.down = 1;
+			goDuckUPMove1(1,22,24,&ud1,&lr1,&duck1);
+			joy.down = 0;
+		}
+		if (duck2.rl == 5 && duck1.ud == SS.ud + 4 && key.up){
+			joy.down = 1;
+			goDuckMIDMove2(1,22,24,&ud1,&lr1,&duck1);
+			joy.down = 0;
+		}
+		if (duck2.rl == 5 && duck1.ud == SS.ud + 8 && key.up){
+			joy.down = 1;
+			goDuckUSDMove2(1,22,24,&ud1,&lr1,&duck1);
+			joy.down = 0;
+		}
 		}
 
 		if(duck2.rl == 5 && key.up && SS.ud == duck2.ud+1 && SS.ud != -20){
 		spaceshipDelete(2,27+SS.ud,91,31+SS.ud);
 		fireDelete(2,27+SS.ud,91,31+SS.ud);
 		SS.ud -= 1;
-		duck1.ud = duck1.ud+SS.ud;
 		spaceship(2,27+SS.ud,91,31+SS.ud);
 		}
 
@@ -137,34 +187,33 @@ int main(void)
 		spaceshipDelete(2,27+SS.ud,91,31+SS.ud);
 		fireDelete(2,27+SS.ud,91,31+SS.ud);
 		SS.ud += 1;
-		duck1.ud = duck1.ud+SS.ud;
 		spaceship(2,27+SS.ud,91,31+SS.ud);
 		}
 
-		if (key.up && duck2.rl != 5 && duck2.ud == SS.ud -1) {
-		duckExplotion(22,24,&ud2,&lr2);
-		playerInSpaceUSDR(2,23,32);
-		ud2=8;
-		lr2=0;
-		duck2.ud = 8;
-		duck2.rl = 0;
-		}
-		if (duck2.rl == 65){
-		duckExplotion(22,24,&ud2,&lr2);
-		playerInSpaceUSDR(2,23,32);
-		ud2=8;
-		lr2=0;
-		duck2.ud = 8;
-		duck2.rl = 0;
-		}
-		if (key.up && duck2.rl != 5 && duck2.ud == SS.ud + 9) {
-		duckExplotion(22,24,&ud2,&lr2);
-		playerInSpaceUSDR(2,23,32);
-		ud2=8;
-		lr2=0;
-		duck2.ud = 8;
-		duck2.rl = 0;
-		}
+//		if (key.up && duck2.rl != 5 && duck2.ud == SS.ud -1) {
+//		duckExplotion(22,24,&ud2,&lr2);
+//		playerInSpaceUSDR(2,23,32);
+//		ud2=8;
+//		lr2=0;
+//		duck2.ud = 8;
+//		duck2.rl = 0;
+//		}
+//		if (duck2.rl == 65){
+//		duckExplotion(22,24,&ud2,&lr2);
+//		playerInSpaceUSDR(2,23,32);
+//		ud2=8;
+//		lr2=0;
+//		duck2.ud = 8;
+//		duck2.rl = 0;
+//		}
+//		if (key.up && duck2.rl != 5 && duck2.ud == SS.ud + 9) {
+//		duckExplotion(22,24,&ud2,&lr2);
+//		playerInSpaceUSDR(2,23,32);
+//		ud2=8;
+//		lr2=0;
+//		duck2.ud = 8;
+//		duck2.rl = 0;
+//		}
 
 		buffer_lenght = uart_get_count();
 		gotoxy(30,10);
@@ -204,8 +253,6 @@ int main(void)
 			key.center = 1;
 		}
 		else {key.center = 0;}
-
-
 
 		random = " ";
 		}
