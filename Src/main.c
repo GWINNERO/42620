@@ -14,33 +14,48 @@ int main(void) {
 	intiJoystick();
 	initLed();
 	lcd_init();
-	writeLed();
+
 	memset(buffer, 0x00, 512);
 	initTimer();
 
 //	char navn[] = "Player 1 Player 2 Player 3 Player 4                      ";
 //	int slicelen = strlen(navn) * 5;
 //	int	p = 128;
-	refreshRate = 10;
 
-	int a;
-	int b;
+	printf("Hello world");
+	refreshRate = 20;
 
-	menu(&a, &b);
+	int player_mode;
+	int difficulty;
+
+	menu(&player_mode, &difficulty);
 	gotoxy(10,10);
-	printf("%d%d", a, b);
-	//LCD_gameplay();
+	printf("%d%d", player_mode, difficulty);
+
+	int alarm = 1;
+	int alarm_off = 0;
+	draw_gameplay_start();
+
 
 
 	while (1) {
-		writeLed();
-
 		if (lcdUpdate == 0){
-			while (lcdUpdate == 0) {
-			}
-			score = score + 10;
-			draw_gameplay_start();
+//			while (lcdUpdate == 0) {
+//			}
+			score = score + 2;
+			draw_score();
 		}
+		if (alarm == 1) {
+			alarm_off += LCD_alarm();
+			if (alarm_off == 5) {
+				alarm_off = 0;
+				alarm = 0;
+			}
+		}
+		if (alarm == 0) {
+			LCD_timer();
+		}
+		writeLed();
 		//readJoystick();
 		/*if(lcdUpdate == 0){
 		lcd_update(navn, p);

@@ -132,7 +132,7 @@ void writeLed(){
 
 
 	// Left - Red
-	if(led.gre){
+	if(led.red){
 		GPIOB->ODR &= (0x0000 << 4); //Set pin PB4 to low - on
 	}
 	else{

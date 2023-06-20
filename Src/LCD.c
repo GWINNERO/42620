@@ -24,6 +24,26 @@ void lcd_write_string(char slice[], uint32_t line, uint32_t place) {
 	lcd_push_buffer(buffer);
 }
 
+void lcd_write_string_no_push(char slice[], uint32_t line, uint32_t place) {
+	for (int j = 0; j < strlen(slice); j++) {
+		int x = slice[j];
+		for (int i = 0; i < 5; i++) {
+			if (line == 1) {
+				buffer[i + place + j * 5] = character_data[x - 32][i];
+			}
+			if (line == 2) {
+				buffer[128 + i + place + j * 5] = character_data[x - 32][i];
+			}
+			if (line == 3) {
+				buffer[256 + i + place + j * 5] = character_data[x - 32][i];
+			}
+			if (line == 4) {
+				buffer[384 + i + place + j * 5] = character_data[x - 32][i];
+			}
+		}
+	}
+}
+
 void lcd_write_string_custom(int character, int amount, uint32_t line, uint32_t place) {
 	for (int j = 0; j < amount; j++) {
 		for (int i = 0; i < 5; i++) {

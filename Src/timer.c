@@ -17,36 +17,67 @@ void initTimer(){
 
 
 void TIM1_BRK_TIM15_IRQHandler(void) {
-	/*if(t.state){
-	t.ml++;
-	}
+	static int i;
 
-	if (t.ml == 100){
-		t.ml = 0;
-		t.sk++;
+	if(t.state){
+		if (t.ml <= 0){
+			t.ml = 99;
+			t.sk--;
+		}
+		if (t.sk < 0){
+			t.sk = 59;
+			t.mn--;
+		}
+		t.ml--;
+		if (t.mn < 0){
+			t.state = 0;
+			t.mn = 0;
+			t.sk = 0;
+			t.ml = 0;
+		}
 	}
-	if (t.sk == 60) {
-		t.sk = 0;
-		t.mn++;
-	}
-	if (t.mn == 60) {
-		t.mn = 0;
-		t.hr++;
-	}*/
 
 	lcdUpdate++;
-
 	if (lcdUpdate >= refreshRate){
 
-	if (led.blu == 0){
-		led.blu = 1;
-	}
-	else if (led.blu == 1){
-		led.blu = 0;
-	}
+//	if (led.blu == 0){
+//		led.blu = 1;
+//	}
+//	else if (led.blu == 1){
+//		led.blu = 0;
+//	}
+
+		if (i > 4){
+			i = 0;
+		}
+		else {
+			i++;
+		}
 
 	lcdUpdate = 0;
 	}
+
+//	switch(i){
+//		case 0:
+//			led.red = 1;
+//			led.gre = 0;
+//			led.blu = 0;
+//			break;
+//		case 2:
+//			led.red = 0;
+//			led.gre = 1;
+//			led.blu = 0;
+//			break;
+//		case 4:
+//			led.red = 0;
+//			led.gre = 0;
+//			led.blu = 1;
+//			break;
+//	}
+
+
+//	gotoxy(1,1);
+//	printf("i:%d | red:%d, green:%d, blue:%d",i,led.red,led.gre,led.blu);
 
 
 TIM15->SR &= ~0x0001; // Clear interrupt bit

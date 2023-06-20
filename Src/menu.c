@@ -69,9 +69,14 @@ void menu(int *players, int *dif) {
 				}
 				gameinit = 1;
 			}
+
 		}
 
 	}
+	memset(buffer, 0x00, 512);
+	t.mn = 2;
+	t.sk = 0;
+	t.state = 1;
 }
 
 int player_selection() {
