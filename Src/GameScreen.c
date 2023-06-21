@@ -703,7 +703,7 @@ void goDuckUP2(int play,int x, int y, int *ud, int *rl,duck_t * D){
 	D->rl = x+1+*rl-23;
 }
 void goDuckUPMove2(int play,int x, int y, int *ud, int *rl,duck_t * D){
-	if (key.down){
+	if (key.down || joy.down){
 	playerInSpaceR(play,x+*rl,y+*ud);
 	playerDelete(play,x+*rl,y+*ud);
 	(*ud)++;
@@ -772,13 +772,13 @@ void goDuckMID2(int play,int x, int y, int *ud, int *rl,duck_t * D){
 	D->rl = x+1+*rl-23;
 }
 void goDuckMIDMove2(int play,int x, int y, int *ud, int *rl,duck_t * D){
-	if (key.up){
-		playerInShipR(play,x+*rl,y+*ud);
-		playerDelete(play,x+*rl,y+*ud);
-		(*ud)--;
-		playerInShipR(play,x+1+*rl,y+*ud);
-		}
-	if (key.down){
+	if (key.up && !(key.down || joy.down)){
+	playerInShipR(play,x+*rl,y+*ud);
+	playerDelete(play,x+*rl,y+*ud);
+	(*ud)--;
+	playerInShipR(play,x+1+*rl,y+*ud);
+	}
+	if (key.down || joy.down){
 	playerInShipR(play,x+*rl,y+*ud);
 	playerDelete(play,x+*rl,y+*ud);
 	(*ud)++;
@@ -847,7 +847,7 @@ void goDuckUSD2(int play,int x, int y, int *ud, int *rl,duck_t * D){
 	D->rl = x+1+*rl-23;
 }
 void goDuckUSDMove2(int play,int x, int y, int *ud, int *rl,duck_t * D){
-	if (key.up || joy.up){
+	if ((key.up || joy.up) && !(key.down || joy.down)){
 	playerInSpaceUSDR(play,x+*rl,y+*ud);
 	playerDelete(play,x+*rl,y+*ud);
 	(*ud)--;
@@ -942,39 +942,45 @@ void Broken(int rand_UP,int rand_OBJ, int x1, int y1){
 	if (rand_OBJ == 1){
 	bgcolor(5);
 	gotoxy(x1+24,y1);
+	Bup = 1;
 	}
 	if (rand_OBJ == 2){
 	bgcolor(5);
 	gotoxy(x1+24,y1+4);
+	Bdown= 1;
 	}
 	if (rand_OBJ == 3) {
 	bgcolor(7);
 	gotoxy(x1+81,y1+2);
+	Bcanon = 1;
 	}
 	if (rand_OBJ == 4) {
 	bgcolor(1);
 	gotoxy(x1+59,y1);
+	Bship1 = 1;
 	}
 	if (rand_OBJ == 5) {
 	bgcolor(1);
 	gotoxy(x1+44,y1+4);
+	Bship2 = 1;
 	}
 	if (rand_OBJ == 6) {
 	bgcolor(1);
 	gotoxy(x1+74,y1+4);
+	Bship3 = 1;
 	}
 
 
 	if (rand_UP == 1) {
 	fgcolor(0);
-	for(int i = 0; i<6; i++) {
-	printf("%c",33);
+	for(int i = 0; i<3; i++) {
+	printf("%c ",33);
 	}
 	}
 	if (rand_UP == 2) {
 	fgcolor(11);
-	for(int i = 0; i<6; i++) {
-	printf("%c",33);
+	for(int i = 0; i<3; i++) {
+	printf("%c ",33);
 	}
 	}
 

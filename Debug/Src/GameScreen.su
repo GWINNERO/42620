@@ -23,4 +23,4 @@ GameScreen.c:865:6:fat	16	static
 GameScreen.c:874:6:playerDelete	40	static
 GameScreen.c:890:6:canonFire	32	static
 GameScreen.c:938:6:Broken	32	static
-GameScreen.c:992:6:duckExplotion	96	static
+GameScreen.c:998:6:duckExplotion	96	static

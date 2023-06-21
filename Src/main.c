@@ -84,9 +84,9 @@ int main(void)
 			key.down = 0;
 		}
 		if (duck1.rl == 5 && duck2.ud == SS.ud + 8 && joy.up){
-			key.down = 1;
-			goDuckUSDMove2(2,22,24,&ud2,&lr2,&duck2);
-			key.down = 0;
+		key.down = 1;
+		goDuckUSDMove2(2,22,24,&ud2,&lr2,&duck2);
+		key.down = 0;
 		}
 		}
 
@@ -104,30 +104,30 @@ int main(void)
 		spaceship(2,27+SS.ud,91,31+SS.ud);
 		}
 
-//		if (joy.up && duck1.rl != 5 && duck1.ud == SS.ud -1) {
-//		duckExplotion(22,24,&ud1,&lr1);
-//		playerInSpaceR(1,23,24);
-//		ud1 = 0;
-//		lr1 = 0;
-//		duck1.ud = 0;
-//		duck1.rl = 0;
-//		}
-//		if (duck1.rl == 65){
-//		duckExplotion(22,24,&ud1,&lr1);
-//		playerInSpaceR(1,23,24);
-//		ud1 = 0;
-//		lr1 = 0;
-//		duck1.ud = 0;
-//		duck1.rl = 0;
-//		}
-//		if (joy.up && duck1.rl != 5 && duck1.ud == SS.ud +9) {
-//		duckExplotion(22,24,&ud1,&lr1);
-//		playerInSpaceR(1,23,24);
-//		ud1 = 0;
-//		lr1 = 0;
-//		duck1.ud = 0;
-//		duck1.rl = 0;
-//		}
+		if (joy.up && duck1.rl != 5 && duck1.ud == SS.ud -1) {
+		duckExplotion(22,24,&ud1,&lr1);
+		playerInSpaceR(1,23,24+SS.ud);
+		ud1 = SS.ud;
+		lr1 = 0;
+		duck1.ud = SS.ud;
+		duck1.rl = 0;
+		}
+		if (duck1.rl == 65){
+		duckExplotion(22,24,&ud1,&lr1);
+		playerInSpaceR(1,23,24+SS.ud);
+		ud1 = SS.ud;
+		lr1 = 0;
+		duck1.ud = SS.ud;
+		duck1.rl = 0;
+		}
+		if (joy.up && duck1.rl != 5 && duck1.ud == SS.ud +9) {
+		duckExplotion(22,24,&ud1,&lr1);
+		playerInSpaceR(1,23,24+SS.ud);
+		ud1 = SS.ud;
+		lr1 = 0;
+		duck1.ud = SS.ud;
+		duck1.rl = 0;
+		}
 
 
 
@@ -161,7 +161,7 @@ int main(void)
 		goDuckUSD2(2,22,24,&ud2,&lr2,&duck2);
 		if (duck2.rl == 5 && duck1.ud == SS.ud && key.up){
 			joy.down = 1;
-			goDuckUPMove1(1,22,24,&ud1,&lr1,&duck1);
+			goDuckUPMove2(1,22,24,&ud1,&lr1,&duck1);
 			joy.down = 0;
 		}
 		if (duck2.rl == 5 && duck1.ud == SS.ud + 4 && key.up){
@@ -170,9 +170,9 @@ int main(void)
 			joy.down = 0;
 		}
 		if (duck2.rl == 5 && duck1.ud == SS.ud + 8 && key.up){
-			joy.down = 1;
-			goDuckUSDMove2(1,22,24,&ud1,&lr1,&duck1);
-			joy.down = 0;
+		joy.down = 1;
+		goDuckUSDMove2(1,22,24,&ud1,&lr1,&duck1);
+		joy.down = 0;
 		}
 		}
 
@@ -190,30 +190,30 @@ int main(void)
 		spaceship(2,27+SS.ud,91,31+SS.ud);
 		}
 
-//		if (key.up && duck2.rl != 5 && duck2.ud == SS.ud -1) {
-//		duckExplotion(22,24,&ud2,&lr2);
-//		playerInSpaceUSDR(2,23,32);
-//		ud2=8;
-//		lr2=0;
-//		duck2.ud = 8;
-//		duck2.rl = 0;
-//		}
-//		if (duck2.rl == 65){
-//		duckExplotion(22,24,&ud2,&lr2);
-//		playerInSpaceUSDR(2,23,32);
-//		ud2=8;
-//		lr2=0;
-//		duck2.ud = 8;
-//		duck2.rl = 0;
-//		}
-//		if (key.up && duck2.rl != 5 && duck2.ud == SS.ud + 9) {
-//		duckExplotion(22,24,&ud2,&lr2);
-//		playerInSpaceUSDR(2,23,32);
-//		ud2=8;
-//		lr2=0;
-//		duck2.ud = 8;
-//		duck2.rl = 0;
-//		}
+		if (key.up && duck2.rl != 5 && duck2.ud == SS.ud -1) {
+		duckExplotion(22,24,&ud2,&lr2);
+		playerInSpaceUSDR(2,23,32+SS.ud);
+		ud2= SS.ud+8;
+		lr2=0;
+		duck2.ud = SS.ud+8;
+		duck2.rl = 0;
+		}
+		if (duck2.rl == 65){
+		duckExplotion(22,24,&ud2,&lr2);
+		playerInSpaceUSDR(2,23,32+SS.ud);
+		ud2= SS.ud+8;
+		lr2=0;
+		duck2.ud = SS.ud+8;
+		duck2.rl = 0;
+		}
+		if (key.up && duck2.rl != 5 && duck2.ud == SS.ud + 9) {
+		duckExplotion(22,24,&ud2,&lr2);
+		playerInSpaceUSDR(2,23,32+SS.ud);
+		ud2= SS.ud+8;
+		lr2=0;
+		duck2.ud = SS.ud+8;
+		duck2.rl = 0;
+		}
 
 		buffer_lenght = uart_get_count();
 		gotoxy(30,10);
@@ -257,15 +257,17 @@ int main(void)
 		random = " ";
 		}
 
-//			b++;
-//			if(b>6) {
-//				b = 0;
-//			}
-//			a++;
-//			if(a>4) {
-//				a = 0;
-//			}
-//			collision(a,b,SS.ud);
+			b++;
+			if(b>6) {
+				b = 0;
+			}
+			a++;
+			if(a>4) {
+				a = 0;
+			}
+			if(astroide){
+			collision(a,b,SS.ud);
+			}
 
 
 

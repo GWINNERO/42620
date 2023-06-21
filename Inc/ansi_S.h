@@ -27,6 +27,7 @@ volatile led_s led;
 
 volatile int lcdUpdate, refreshRate;
 
+volatile int Bcanon, Bup, Bdown, Bship1,Bship2,Bship3;
 
 void canonFire(int b,int SS);
 void copyJoystick();
