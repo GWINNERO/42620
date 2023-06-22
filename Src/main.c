@@ -22,14 +22,13 @@ int main(void) {
 //	int slicelen = strlen(navn) * 5;
 //	int	p = 128;
 
-	printf("Hello world");
 	refreshRate = 20;
 
 	int player_mode;
 	int difficulty;
 
 	menu(&player_mode, &difficulty);
-	gotoxy(10,10);
+	gotoxy(10,15);
 	printf("%d%d", player_mode, difficulty);
 
 	int alarm = 1;
@@ -40,8 +39,8 @@ int main(void) {
 
 	while (1) {
 		if (lcdUpdate == 0){
-//			while (lcdUpdate == 0) {
-//			}
+			while (lcdUpdate == 0) {
+			}
 			score = score + 2;
 			draw_score();
 		}
@@ -55,6 +54,7 @@ int main(void) {
 		if (alarm == 0) {
 			LCD_timer();
 		}
+		readJoystick();
 		writeLed();
 		//readJoystick();
 		/*if(lcdUpdate == 0){

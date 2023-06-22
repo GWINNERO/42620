@@ -115,27 +115,38 @@ int player_selection() {
 
 int difficulty() {
 	int x = 0;
-	int a;
+	int a = 0;
 	lcd_write_string("                ", 2, 12);
 	lcd_write_string("<Easy>", 2, 12);
 	while (x == 0) {
 		readJoystick();
-
-		if (joy.right == 1) {
-			a = 1;
-		} else if (joy.left == 1) {
-			a = 0;
+		if (joy.right == 1 && a <= 1) {
+			while (joy.right == 1) {
+				readJoystick();
+			}
+			a++;
+		} else if (joy.left == 1 && a >= 1) {
+			while (joy.left == 1) {
+				readJoystick();
+			}
+			a--;
 		}
-		if (a == 1 ) {
-			lcd_write_string("<Hard>", 2, 12);
-		} else if (a == 0 ) {
-			lcd_write_string("<Easy>", 2, 12);
+		if (a == 0 ) {
+			lcd_write_string_no_push("        ", 2, 12);
+			lcd_write_string("<easy>", 2, 12);
+		} else if (a == 1 ) {
+			lcd_write_string("<normal>", 2, 12);
+		} else if (a == 2 ) {
+			lcd_write_string_no_push("        ", 2, 12);
+			lcd_write_string("<hard>", 2, 12);
 		}
 		if (joy.center == 1 ) {
 			lcd_write_string("Difficulty", 2, 12);
 			if (a == 0) {
 				lcd_write_string("<easy>", 2, 98);
 			} else if (a == 1) {
+				lcd_write_string("<norm>", 2, 98);
+			} else if (a == 2) {
 				lcd_write_string("<hard>", 2, 98);
 			}
 			x = 1;
@@ -150,6 +161,11 @@ int difficulty() {
 void help_menu() {
 	int x = 0;
 	lcd_write_string("!Help window on screen!", 3, 12);
+	windowSmp(5,5,80,35);
+	gotoxy(10,7);
+	printf("Player 1 uses the joystick to move and center to shoot");
+	gotoxy(10,10);
+	printf("Player 2 uses WASD to move and E to shoot");
 }
 
 void draw_main_menu() {

@@ -81,7 +81,7 @@ void intiJoystick(){
 }
 
 
-int16_t readJoystick(){
+void readJoystick(){
 
 	int32_t a = GPIOC->IDR & (0x0001 << 0); //Read from pin PCx - right
 	int32_t b = GPIOA->IDR & (0x0001 << 4); //Read from pin PCx - up
@@ -100,4 +100,7 @@ int16_t readJoystick(){
 	joy.left	= d;
 	joy.down 	= e;
 
+	led.red = joy.up;
+	led.gre = joy.down;
+	led.blu = joy.right;
 }
