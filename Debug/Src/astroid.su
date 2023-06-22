@@ -1,0 +1,11 @@
+astroid.c:7:6:initAstro	4	static
+astroid.c:32:6:asteroidUpdate	16	static
+astroid.c:38:6:readjoy	4	static
+astroid.c:54:6:shoot	16	static
+astroid.c:60:6:moveBullet	8	static
+astroid.c:71:6:drawBullet	32	static
+astroid.c:119:6:asteroid1	40	static
+astroid.c:167:6:asteroid2	16	static
+astroid.c:193:6:clearAsteroSmall	16	static
+astroid.c:206:6:drawAsteroidSmall	16	static
+astroid.c:225:6:drawAsteroidMedium	16	static

@@ -47,6 +47,7 @@ void spaceship(int x1, int y1, int x2, int y2) {
 	bgcolor(6);
 	fgcolor(0);
 	printf("HATCH");
+	bgcolor(0);
 	fgcolor(1);
 	for(int i = 0; i <29; i++) {
 	printf("%c",219);
@@ -66,6 +67,7 @@ void spaceship(int x1, int y1, int x2, int y2) {
 	bgcolor(6);
 	fgcolor(0);
 	printf("HATCH");
+	bgcolor(0);
 	fgcolor(1);
 	for(int i = 0; i <29; i++) {
 	printf("%c",219);
@@ -96,6 +98,7 @@ void spaceship(int x1, int y1, int x2, int y2) {
 	fgcolor(0);
 	bgcolor(7);
 	printf(" CANON   ");
+	resetbgcolor();
 }
 
 void spaceshipDelete(int x1, int y1, int x2, int y2) {
@@ -274,6 +277,7 @@ void fire(int x1, int y1, int x2, int y2) {
 		ani = 0;
 	}
 	}
+	resetbgcolor();
 }
 
 void fireDelete(int x1, int y1, int x2, int y2) {
@@ -347,6 +351,7 @@ void playerInShipR(int p,int x, int y){
 	fgcolor(2);
 	fat(0);
 	}
+	resetbgcolor();
 }
 
 void playerInShipL(int p,int x, int y){
@@ -396,6 +401,7 @@ void playerInShipL(int p,int x, int y){
 	fgcolor(2);
 	fat(0);
 	}
+	resetbgcolor();
 }
 
 void playerInSpaceR(int p, int x, int y){   //duck
@@ -453,6 +459,7 @@ void playerInSpaceR(int p, int x, int y){   //duck
 	fgcolor(2);
 	fat(0);
 	}
+	resetbgcolor();
 }
 
 void playerInSpaceL(int p, int x, int y){
@@ -510,6 +517,7 @@ void playerInSpaceL(int p, int x, int y){
 	fgcolor(2);
 	fat(0);
 	}
+	resetbgcolor();
 }
 
 void playerInSpaceUSDL(int p, int x, int y){
@@ -567,6 +575,7 @@ void playerInSpaceUSDL(int p, int x, int y){
 	fgcolor(2);
 	fat(0);
 	}
+	resetbgcolor();
 }
 
 void playerInSpaceUSDR(int p, int x, int y){
@@ -601,119 +610,266 @@ void playerInSpaceUSDR(int p, int x, int y){
 	if (p == 2) {
 	fgcolor(11);
 	bgcolor(7);
-	gotoxy(x+1,y+2);
+	gotoxy(x+2,y+2);
 	printf("%c",254	);
 	bgcolor(0);
 
-	gotoxy(x+1,y+1);
-	printf("%c",219);
-	printf("%c",219);
+	gotoxy(x,y+1);
 	printf("%c",220);
+	printf("%c",219);
+	printf("%c",219);
 
 	fgcolor(9);
 	gotoxy(x+1,y);
-	printf("%c",191);
-	printf("%c",191);
+	printf("%c",218);
+	printf("%c",218);
 
 	fat(1);
 	fgcolor(9);
 	bgcolor(7);
-	gotoxy(x,y+2);
-	printf("%c",62);
+	gotoxy(x+3,y+2);
+	printf("%c",60);
 	bgcolor(0);
 	fgcolor(2);
 	fat(0);
 	}
+	resetbgcolor();
 }
 
-void goDuck1UP(int x, int y, int *ud, int *rl,duck_t * D){
+void goDuckUP1(int play,int x, int y, int *ud, int *rl,duck_t * D){
 
-	if (joy.up && !CJoy.up && D->ud >-20){
-	playerInSpaceR(1,x+*rl,y+*ud);
-	playerDelete(1,x+*rl,y+*ud);
+	if (joy.up && !CJoy.up && D->ud >-21){
+	playerInSpaceR(play,x+*rl,y+*ud);
+	playerDelete(play,x+*rl,y+*ud);
 	(*ud)--;
-	playerInSpaceR(1,x+1+*rl,y+*ud);
+	playerInSpaceR(play,x+1+*rl,y+*ud);
 	}
 	if (joy.left && !CJoy.left && D->rl >0){
-	playerInSpaceL(1,x+*rl,y+*ud);
-	playerDelete(1,x+*rl,y+*ud);
+	playerInSpaceL(play,x+*rl,y+*ud);
+	playerDelete(play,x+*rl,y+*ud);
 	(*rl)-=5;
-	playerInSpaceL(1,x+1+*rl,y+*ud);
+	playerInSpaceL(play,x+1+*rl,y+*ud);
 	}
 	if (joy.right && !CJoy.right && D->rl <65){
-	playerInSpaceR(1,x+*rl,y+*ud);
-	playerDelete(1,x+*rl,y+*ud);
+	playerInSpaceR(play,x+*rl,y+*ud);
+	playerDelete(play,x+*rl,y+*ud);
 	(*rl)+=5;
-	playerInSpaceR(1,x+1+*rl,y+*ud);
+	playerInSpaceR(play,x+1+*rl,y+*ud);
 	}
 	if (joy.center && !CJoy.center && D->rl == 30){
-	playerInSpaceR(1,x+*rl,y+*ud);
+	playerInSpaceR(play,x+*rl,y+*ud);
 	playerDelete(1,x+*rl,y+*ud);
 	(*ud)+=4;
-	playerInShipR(1,x+1+*rl,y+*ud);
+	playerInShipR(play,x+1+*rl,y+*ud);
 	}
 	D->ud = *ud;
 	D->rl = x+1+*rl-23;
 }
 
-void goDuck1MID(int x, int y, int *ud, int *rl,duck_t * D){
+void goDuckUPMove1(int play,int x, int y, int *ud, int *rl,duck_t * D) {
+	if (joy.up){
+		playerInSpaceR(play,x+*rl,y+*ud);
+		playerDelete(play,x+*rl,y+*ud);
+		(*ud)--;
+		playerInSpaceR(play,x+1+*rl,y+*ud);
+		}
+	if (joy.down){
+		playerInSpaceR(play,x+*rl,y+*ud);
+		playerDelete(play,x+*rl,y+*ud);
+		(*ud)++;
+		playerInSpaceR(play,x+1+*rl,y+*ud);
+		}
+	D->ud = *ud;
+}
+
+
+void goDuckUP2(int play,int x, int y, int *ud, int *rl,duck_t * D){
+
+	if (key.up && D->ud >-21){
+	playerInSpaceR(play,x+*rl,y+*ud);
+	playerDelete(play,x+*rl,y+*ud);
+	(*ud)--;
+	playerInSpaceR(play,x+1+*rl,y+*ud);
+	}
+	if (key.left && D->rl >0){
+	playerInSpaceL(play,x+*rl,y+*ud);
+	playerDelete(play,x+*rl,y+*ud);
+	(*rl)-=5;
+	playerInSpaceL(play,x+1+*rl,y+*ud);
+	}
+	if (key.right && D->rl <65){
+	playerInSpaceR(play,x+*rl,y+*ud);
+	playerDelete(play,x+*rl,y+*ud);
+	(*rl)+=5;
+	playerInSpaceR(play,x+1+*rl,y+*ud);
+	}
+	if (key.center && D->rl == 30){
+	playerInSpaceR(play,x+*rl,y+*ud);
+	playerDelete(1,x+*rl,y+*ud);
+	(*ud)+=4;
+	playerInShipR(play,x+1+*rl,y+*ud);
+	}
+	D->ud = *ud;
+	D->rl = x+1+*rl-23;
+}
+void goDuckUPMove2(int play,int x, int y, int *ud, int *rl,duck_t * D){
+	if (key.down || joy.down){
+	playerInSpaceR(play,x+*rl,y+*ud);
+	playerDelete(play,x+*rl,y+*ud);
+	(*ud)++;
+	playerInSpaceR(play,x+1+*rl,y+*ud);
+	}
+	D->ud = *ud;
+}
+
+void goDuckMID1(int play,int x, int y, int *ud, int *rl,duck_t * D){
 
 	if (joy.up && !CJoy.up && D->rl == 30){
-	playerInShipR(1,x+*rl,y+*ud);
-	playerDelete(1,x+*rl,y+*ud);
+	playerInShipR(play,x+*rl,y+*ud);
+	playerDelete(play,x+*rl,y+*ud);
 	(*ud)-= 4;
-	playerInSpaceR(1,x+1+*rl,y+*ud);
+	playerInSpaceR(play,x+1+*rl,y+*ud);
 	}
 	if (joy.down && !CJoy.down  && D->rl == 30){
-	playerInShipR(1,x+*rl,y+*ud);
-	playerDelete(1,x+*rl,y+*ud);
+	playerInShipR(play,x+*rl,y+*ud);
+	playerDelete(play,x+*rl,y+*ud);
 	(*ud)+= 4;
-	playerInSpaceUSDR(1,x+1+*rl,y+*ud);
+	playerInSpaceUSDR(play,x+1+*rl,y+*ud);
 	}
 	if (joy.left && !CJoy.left && D->rl >0){
-	playerInShipL(1,x+*rl,y+*ud);
-	playerDelete(1,x+*rl,y+*ud);
+	playerInShipL(play,x+*rl,y+*ud);
+	playerDelete(play,x+*rl,y+*ud);
 	(*rl)-=5;
-	playerInShipL(1,x+1+*rl,y+*ud);
+	playerInShipL(play,x+1+*rl,y+*ud);
 	}
 	if (joy.right && !CJoy.right && D->rl <55){
-	playerInShipR(1,x+*rl,y+*ud);
-	playerDelete(1,x+*rl,y+*ud);
+	playerInShipR(play,x+*rl,y+*ud);
+	playerDelete(play,x+*rl,y+*ud);
 	(*rl)+=5;
-	playerInShipR(1,x+1+*rl,y+*ud);
+	playerInShipR(play,x+1+*rl,y+*ud);
 	}
 	D->ud = *ud;
 	D->rl = x+1+*rl-23;
 }
 
-void goDuck1USD(int x, int y, int *ud, int *rl,duck_t * D){
+void goDuckMID2(int play,int x, int y, int *ud, int *rl,duck_t * D){
 
-	if (joy.up && !CJoy.up && D->ud <28){
-	playerInSpaceUSDR(1,x+*rl,y+*ud);
-	playerDelete(1,x+*rl,y+*ud);
-	(*ud)++;
-	playerInSpaceUSDR(1,x+1+*rl,y+*ud);
+	if (key.up && D->rl == 30){
+	playerInShipR(play,x+*rl,y+*ud);
+	playerDelete(play,x+*rl,y+*ud);
+	(*ud)-= 4;
+	playerInSpaceR(play,x+1+*rl,y+*ud);
 	}
-	if (joy.right && !CJoy.right && D->rl >0){
-	playerInSpaceUSDL(1,x+*rl,y+*ud);
-	playerDelete(1,x+*rl,y+*ud);
+	if (key.down && D->rl == 30){
+	playerInShipR(play,x+*rl,y+*ud);
+	playerDelete(play,x+*rl,y+*ud);
+	(*ud)+= 4;
+	playerInSpaceUSDR(play,x+1+*rl,y+*ud);
+	}
+	if (key.left && D->rl >0){
+	playerInShipL(play,x+*rl,y+*ud);
+	playerDelete(play,x+*rl,y+*ud);
 	(*rl)-=5;
-	playerInSpaceUSDL(1,x+1+*rl,y+*ud);
+	playerInShipL(play,x+1+*rl,y+*ud);
 	}
-	if (joy.left && !CJoy.left && D->rl <65){
-	playerInSpaceUSDR(1,x+*rl,y+*ud);
-	playerDelete(1,x+*rl,y+*ud);
+	if (key.right && D->rl <55){
+	playerInShipR(play,x+*rl,y+*ud);
+	playerDelete(play,x+*rl,y+*ud);
 	(*rl)+=5;
-	playerInSpaceUSDR(1,x+1+*rl,y+*ud);
-	}
-	if (joy.center && !CJoy.center && D->rl == 30){
-	playerInSpaceUSDR(1,x+*rl,y+*ud);
-	playerDelete(1,x+*rl,y+*ud);
-	(*ud)-=4;
-	playerInShipR(1,x+1+*rl,y+*ud);
+	playerInShipR(play,x+1+*rl,y+*ud);
 	}
 	D->ud = *ud;
 	D->rl = x+1+*rl-23;
+}
+void goDuckMIDMove2(int play,int x, int y, int *ud, int *rl,duck_t * D){
+	if (key.up && !(key.down || joy.down)){
+	playerInShipR(play,x+*rl,y+*ud);
+	playerDelete(play,x+*rl,y+*ud);
+	(*ud)--;
+	playerInShipR(play,x+1+*rl,y+*ud);
+	}
+	if (key.down || joy.down){
+	playerInShipR(play,x+*rl,y+*ud);
+	playerDelete(play,x+*rl,y+*ud);
+	(*ud)++;
+	playerInShipR(play,x+1+*rl,y+*ud);
+	}
+	D->ud = *ud;
+}
+
+void goDuckUSD1(int play,int x, int y, int *ud, int *rl,duck_t * D){
+
+	if (joy.up && !CJoy.up && D->ud <30){
+	playerInSpaceUSDR(play,x+*rl,y+*ud);
+	playerDelete(play,x+*rl,y+*ud);
+	(*ud)++;
+	playerInSpaceUSDR(play,x+1+*rl,y+*ud);
+	}
+	if (joy.right && !CJoy.right && D->rl >0){
+	playerInSpaceUSDL(play,x+*rl,y+*ud);
+	playerDelete(play,x+*rl,y+*ud);
+	(*rl)-=5;
+	playerInSpaceUSDL(play,x+1+*rl,y+*ud);
+	}
+	if (joy.left && !CJoy.left && D->rl <65){
+	playerInSpaceUSDR(play,x+*rl,y+*ud);
+	playerDelete(play,x+*rl,y+*ud);
+	(*rl)+=5;
+	playerInSpaceUSDR(play,x+1+*rl,y+*ud);
+	}
+	if (joy.center && !CJoy.center && D->rl == 30){
+	playerInSpaceUSDR(play,x+*rl,y+*ud);
+	playerDelete(play,x+*rl,y+*ud);
+	(*ud)-=4;
+	playerInShipR(play,x+1+*rl,y+*ud);
+	}
+	D->ud = *ud;
+	D->rl = x+1+*rl-23;
+}
+
+void goDuckUSD2(int play,int x, int y, int *ud, int *rl,duck_t * D){
+
+	if (key.up && D->ud <30){
+	playerInSpaceUSDR(play,x+*rl,y+*ud);
+	playerDelete(play,x+*rl,y+*ud);
+	(*ud)++;
+	playerInSpaceUSDR(play,x+1+*rl,y+*ud);
+	}
+	if (key.right && D->rl >0){
+	playerInSpaceUSDL(play,x+*rl,y+*ud);
+	playerDelete(play,x+*rl,y+*ud);
+	(*rl)-=5;
+	playerInSpaceUSDL(play,x+1+*rl,y+*ud);
+	}
+	if (key.left && D->rl <65){
+	playerInSpaceUSDR(play,x+*rl,y+*ud);
+	playerDelete(play,x+*rl,y+*ud);
+	(*rl)+=5;
+	playerInSpaceUSDR(play,x+1+*rl,y+*ud);
+	}
+	if (key.center && D->rl == 30){
+	playerInSpaceUSDR(play,x+*rl,y+*ud);
+	playerDelete(play,x+*rl,y+*ud);
+	(*ud)-=4;
+	playerInShipR(play,x+1+*rl,y+*ud);
+	}
+	D->ud = *ud;
+	D->rl = x+1+*rl-23;
+}
+void goDuckUSDMove2(int play,int x, int y, int *ud, int *rl,duck_t * D){
+	if ((key.up || joy.up) && !(key.down || joy.down)){
+	playerInSpaceUSDR(play,x+*rl,y+*ud);
+	playerDelete(play,x+*rl,y+*ud);
+	(*ud)--;
+	playerInSpaceUSDR(play,x+1+*rl,y+*ud);
+	}
+	if (key.down || joy.down){
+	playerInSpaceUSDR(play,x+*rl,y+*ud);
+	playerDelete(play,x+*rl,y+*ud);
+	(*ud)++;
+	playerInSpaceUSDR(play,x+1+*rl,y+*ud);
+	}
+	D->ud = *ud;
 }
 
 void fat(int state) {
@@ -741,10 +897,13 @@ void playerDelete(int p,int x, int y){
 	}
 }
 
-void canonFire(int SS){
+void canonFire(int b,int SS){
+	bgcolor(0);
+
+	if (b == 1){
 	fat(1);
+	bgcolor(2);
 	for(int i = 0; i<88 ;i++){
-		bgcolor(2);
 	gotoxy(92+i,29+SS);
 	printf("%c",205);
 	printf("%c",205);
@@ -762,6 +921,30 @@ void canonFire(int SS){
 	printf("%c",32);
 	}
 }
+if (b == 2){
+fat(1);
+bgcolor(1);
+for(int i = 0; i<88 ;i++){
+gotoxy(92+i,29+SS);
+printf("%c",178);
+printf("%c",178);
+printf("%c",178);
+printf("%c",178);
+printf("%c",178);
+bgcolor(0);
+gotoxy(92+i-1,29+SS);
+printf("%c",32);
+}
+gotoxy(178,29+SS);
+fgcolor(10);
+fat(0);
+for(int i = 0; i<6; i++){
+printf("%c",32);
+}
+}
+resetbgcolor();
+}
+
 
 void Broken(int rand_UP,int rand_OBJ, int x1, int y1){
 	fat(1);
@@ -770,39 +953,45 @@ void Broken(int rand_UP,int rand_OBJ, int x1, int y1){
 	if (rand_OBJ == 1){
 	bgcolor(5);
 	gotoxy(x1+24,y1);
+	Bup = 1;
 	}
 	if (rand_OBJ == 2){
 	bgcolor(5);
 	gotoxy(x1+24,y1+4);
+	Bdown= 1;
 	}
 	if (rand_OBJ == 3) {
 	bgcolor(7);
 	gotoxy(x1+81,y1+2);
+	Bcanon = 1;
 	}
 	if (rand_OBJ == 4) {
 	bgcolor(1);
-	gotoxy(x1+59,y1);
+	gotoxy(x1+55,y1);
+	Bship1 = 1;
 	}
 	if (rand_OBJ == 5) {
 	bgcolor(1);
 	gotoxy(x1+44,y1+4);
+	Bship2 = 1;
 	}
 	if (rand_OBJ == 6) {
 	bgcolor(1);
 	gotoxy(x1+74,y1+4);
+	Bship3 = 1;
 	}
 
 
 	if (rand_UP == 1) {
 	fgcolor(0);
-	for(int i = 0; i<6; i++) {
-	printf("%c",33);
+	for(int i = 0; i<3; i++) {
+	printf("%c ",33);
 	}
 	}
 	if (rand_UP == 2) {
 	fgcolor(11);
-	for(int i = 0; i<6; i++) {
-	printf("%c",33);
+	for(int i = 0; i<3; i++) {
+	printf("%c ",33);
 	}
 	}
 
@@ -813,8 +1002,7 @@ void Broken(int rand_UP,int rand_OBJ, int x1, int y1){
 
 	fat(0);
 	blink(0);
-	bgcolor(0);
-	fgcolor(0);
+	resetbgcolor();
 	}
 
 void duckExplotion(int x, int y, int *ud, int *rl){
@@ -911,7 +1099,7 @@ void duckExplotion(int x, int y, int *ud, int *rl){
 	for (int i = 0; i < 3; i++){
 	printf("%c",32);
 	}
-	fgcolor(0);
+	resetbgcolor();
 	}
 
 
