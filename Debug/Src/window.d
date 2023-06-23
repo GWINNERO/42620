@@ -1,5 +1,5 @@
-Src/timer.o: ../Src/timer.c \
- C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/ansi_S.h \
+Src/window.o: ../Src/window.c \
+ C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/ansi_s.h \
  C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/stm32f30x_conf.h \
  C:/Users/Emilo/OneDrive/Skrivebord/Game/SPL/inc/stm32f30x_adc.h \
  C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/stm32f30x.h \
@@ -28,11 +28,9 @@ Src/timer.o: ../Src/timer.c \
  C:/Users/Emilo/OneDrive/Skrivebord/Game/SPL/inc/stm32f30x_tim.h \
  C:/Users/Emilo/OneDrive/Skrivebord/Game/SPL/inc/stm32f30x_usart.h \
  C:/Users/Emilo/OneDrive/Skrivebord/Game/SPL/inc/stm32f30x_wwdg.h \
- C:/Users/Emilo/OneDrive/Skrivebord/Game/SPL/inc/stm32f30x_misc.h \
- C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/timer.h \
- C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/joystick.h
+ C:/Users/Emilo/OneDrive/Skrivebord/Game/SPL/inc/stm32f30x_misc.h
 
-C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/ansi_S.h:
+C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/ansi_s.h:
 
 C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/stm32f30x_conf.h:
 
@@ -91,7 +89,3 @@ C:/Users/Emilo/OneDrive/Skrivebord/Game/SPL/inc/stm32f30x_usart.h:
 C:/Users/Emilo/OneDrive/Skrivebord/Game/SPL/inc/stm32f30x_wwdg.h:
 
 C:/Users/Emilo/OneDrive/Skrivebord/Game/SPL/inc/stm32f30x_misc.h:
-
-C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/timer.h:
-
-C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/joystick.h:

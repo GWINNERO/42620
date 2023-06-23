@@ -31,7 +31,12 @@ Src/main.o: ../Src/main.c \
  C:/Users/Emilo/OneDrive/Skrivebord/Game/SPL/inc/stm32f30x_misc.h \
  C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/30010_io.h \
  C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/ansi_S.h \
- C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/joystick.h
+ C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/joystick.h \
+ C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/timer.h \
+ C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/astroid.h \
+ C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/LCD.h \
+ C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/charset.h \
+ C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/charset.h
 
 C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/stm32f30x_conf.h:
 
@@ -98,3 +103,13 @@ C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/30010_io.h:
 C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/ansi_S.h:
 
 C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/joystick.h:
+
+C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/timer.h:
+
+C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/astroid.h:
+
+C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/LCD.h:
+
+C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/charset.h:
+
+C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/charset.h:

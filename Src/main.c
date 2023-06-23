@@ -2,7 +2,10 @@
 #include "30010_io.h" 		// Input/output library for this course
 #include "ansi_S.h"
 #include "joystick.h"
-//#include "timer.h"
+#include "timer.h"
+#include "astroid.h"
+#include "LCD.h"
+#include "charset.h"
 
 
 int main(void)
@@ -10,8 +13,6 @@ int main(void)
 	uart_init(250000);
 	clrscr();
 	intiJoystick();
-<<<<<<< Updated upstream
-=======
 	initLed();
 	lcd_init();
 	initTimer();
@@ -25,19 +26,9 @@ int main(void)
 	memset(buffer,0x00,512);
 	menu(&playermode,&diff);
 	clrscr();
->>>>>>> Stashed changes
 	startWindow(1,1,184,58);
-//	initLed();
-//	initTimer();
-//	refreshRate = 5;
-	duck_t duck1;
-	spaceship_t SS;
 	spaceship(2,27,91,31);
 	playerInSpaceR(1,23,24);
-<<<<<<< Updated upstream
-	SS.ud = 0;
-	int ud =0, lr =0, a = 0, b=0;
-=======
 	playerInSpaceUSDR(2,23,32);
 	windowSmp(141,2,183,4);
 	initAstro();
@@ -65,24 +56,9 @@ int main(void)
 	initBuzz();
 	setFreq(0);
 
->>>>>>> Stashed changes
 	while(1){
-
+		drawTime();
 		readJoystick();
-<<<<<<< Updated upstream
-		gotoxy(10,9);
-		printf("%d%d%d%d%d",joy.left,joy.right,joy.up,joy.down,joy.center);
-
-		gotoxy(10,10);
-		printf("Duck rl = %d",joy.left);
-		gotoxy(10,11);
-		printf("U/D = %d",joy.right);
-		fire(2,27+SS.ud,91,31+SS.ud);
-
-
-		if(duck1.ud == SS.ud) {
-		goDuck1UP(22,24,&ud,&lr,&duck1);
-=======
 		if (lcdUpdate == 0){
 					while (lcdUpdate == 0) {
 					}
@@ -128,7 +104,6 @@ int main(void)
 				goDuckUSDMove2(2,22,24,&ud2,&lr2,&duck2);
 				key.up = 0;
 			}
->>>>>>> Stashed changes
 		}
 		if (Bship1 == 1 && duck1.rl == 35 && joy.up) {
 			four++;
@@ -161,15 +136,9 @@ int main(void)
 
 
 		if(duck1.ud == SS.ud + 4 || duck1.ud == SS.ud - 4){
-<<<<<<< Updated upstream
-		goDuck1MID(22,24,&ud,&lr,&duck1);
-		if(duck1.rl == 55 && joy.right && !CJoy.right){
-			canonFire(SS.ud);
-=======
 		goDuckMID1(1,22,24,&ud1,&lr1,&duck1);
 		if(duck1.rl == 55 && joy.right && !CJoy.right && Bcanon == 0){
 			shoot(SS.ud);
->>>>>>> Stashed changes
 		}
 		if(duck1.rl == 55 && joy.right && !CJoy.right && Bcanon == 1){
 			three++;
@@ -186,10 +155,6 @@ int main(void)
 		}
 		}
 
-<<<<<<< Updated upstream
-		if(duck1.ud == SS.ud+8) {
-		goDuck1USD(22,24,&ud,&lr,&duck1);
-=======
 		if(duck1.ud == SS.ud+8 && Bdown == 0 && !(Bship2 == 1 && duck1.rl == 25) && !(Bship3 == 1 && duck1.rl == 55)) {
 		goDuckUSD1(1,22,24,&ud1,&lr1,&duck1);
 		if (duck1.rl == 5 && duck2.ud == SS.ud && joy.up && Bdown == 0){
@@ -207,7 +172,6 @@ int main(void)
 		goDuckUSDMove2(2,22,24,&ud2,&lr2,&duck2);
 		key.down = 0;
 		}
->>>>>>> Stashed changes
 		}
 		if (Bship2 == 1 && duck1.rl == 25 && joy.up) {
 			five++;
@@ -234,9 +198,6 @@ int main(void)
 		}
 		}
 
-<<<<<<< Updated upstream
-		if(duck1.rl == 5 && joy.up && !CJoy.up && SS.ud == duck1.ud+1){
-=======
 		if(duck1.ud == SS.ud + 8 && Bdown == 1 && duck1.rl == 5 && joy.up == 1) {
 					two++;
 					if (two == 5) {
@@ -255,44 +216,46 @@ int main(void)
 				}
 
 		if(duck1.rl == 5 && joy.up && !CJoy.up && SS.ud == duck1.ud+1 & SS.ud != -20 && Bup == 0){
->>>>>>> Stashed changes
 		spaceshipDelete(2,27+SS.ud,91,31+SS.ud);
 		fireDelete(2,27+SS.ud,91,31+SS.ud);
-		SS.ud = duck1.ud;
+		SS.ud -= 1;
 		spaceship(2,27+SS.ud,91,31+SS.ud);
 		}
 
-<<<<<<< Updated upstream
-		if(duck1.rl == 5 && joy.up && !CJoy.up && SS.ud == duck1.ud-9){
-=======
 		if(duck1.rl == 5 && joy.up && !CJoy.up && SS.ud == duck1.ud-9 && SS.ud != 21 && Bdown == 0){
->>>>>>> Stashed changes
 		spaceshipDelete(2,27+SS.ud,91,31+SS.ud);
 		fireDelete(2,27+SS.ud,91,31+SS.ud);
-		SS.ud = duck1.ud-8;
+		SS.ud += 1;
 		spaceship(2,27+SS.ud,91,31+SS.ud);
 		}
 
-		if(duck1.ud == SS.ud-1 || duck1.ud == SS.ud+9 || duck1.rl == 65) {
-			duckExplotion(22,24,&ud,&lr);
+		if (joy.up && duck1.rl != 5 && duck1.ud == SS.ud -1) {
+		duckExplotion(22,24,&ud1,&lr1);
+		playerInSpaceR(1,23,24+SS.ud);
+		ud1 = SS.ud;
+		lr1 = 0;
+		duck1.ud = SS.ud;
+		duck1.rl = 0;
+		}
+		if (duck1.rl == 65){
+		duckExplotion(22,24,&ud1,&lr1);
+		playerInSpaceR(1,23,24+SS.ud);
+		ud1 = SS.ud;
+		lr1 = 0;
+		duck1.ud = SS.ud;
+		duck1.rl = 0;
+		}
+		if (joy.up && duck1.rl != 5 && duck1.ud == SS.ud +9) {
+		duckExplotion(22,24,&ud1,&lr1);
+		playerInSpaceR(1,23,24+SS.ud);
+		ud1 = SS.ud;
+		lr1 = 0;
+		duck1.ud = SS.ud;
+		duck1.rl = 0;
 		}
 
-//			b++;
-//			if(b>6) {
-//				b = 0;
-//			}
-//			a++;
-//			if(a>4) {
-//				a = 0;
-//			}
-//			collision(a,b,SS.ud);
 
 
-<<<<<<< Updated upstream
-		copyJoystick();
-
-
-=======
 
 
 
@@ -547,6 +510,5 @@ int main(void)
 		}
 		writeLed();
 		score += 10;
->>>>>>> Stashed changes
 	}
 }

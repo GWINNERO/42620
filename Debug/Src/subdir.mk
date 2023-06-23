@@ -8,43 +8,64 @@ C_SRCS += \
 ../Src/30010_io.c \
 ../Src/GameScreen.c \
 ../Src/Joystick.c \
+../Src/LCD.c \
+../Src/LCDgameplay.c \
 ../Src/LED.c \
 ../Src/ansi_S.c \
+../Src/astroid.c \
+../Src/buzzer.c \
+../Src/charset.c \
 ../Src/main.c \
+../Src/menu.c \
 ../Src/rocet.c \
 ../Src/screen.c \
 ../Src/syscalls.c \
 ../Src/sysmem.c \
 ../Src/system_stm32f30x.c \
-../Src/timer.c 
+../Src/timer.c \
+../Src/window.c 
 
 OBJS += \
 ./Src/30010_io.o \
 ./Src/GameScreen.o \
 ./Src/Joystick.o \
+./Src/LCD.o \
+./Src/LCDgameplay.o \
 ./Src/LED.o \
 ./Src/ansi_S.o \
+./Src/astroid.o \
+./Src/buzzer.o \
+./Src/charset.o \
 ./Src/main.o \
+./Src/menu.o \
 ./Src/rocet.o \
 ./Src/screen.o \
 ./Src/syscalls.o \
 ./Src/sysmem.o \
 ./Src/system_stm32f30x.o \
-./Src/timer.o 
+./Src/timer.o \
+./Src/window.o 
 
 C_DEPS += \
 ./Src/30010_io.d \
 ./Src/GameScreen.d \
 ./Src/Joystick.d \
+./Src/LCD.d \
+./Src/LCDgameplay.d \
 ./Src/LED.d \
 ./Src/ansi_S.d \
+./Src/astroid.d \
+./Src/buzzer.d \
+./Src/charset.d \
 ./Src/main.d \
+./Src/menu.d \
 ./Src/rocet.d \
 ./Src/screen.d \
 ./Src/syscalls.d \
 ./Src/sysmem.d \
 ./Src/system_stm32f30x.d \
-./Src/timer.d 
+./Src/timer.d \
+./Src/window.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -54,11 +75,7 @@ Src/%.o: ../Src/%.c Src/subdir.mk
 clean: clean-Src
 
 clean-Src:
-<<<<<<< Updated upstream
-	-$(RM) ./Src/30010_io.d ./Src/30010_io.o ./Src/GameScreen.d ./Src/GameScreen.o ./Src/Joystick.d ./Src/Joystick.o ./Src/LED.d ./Src/LED.o ./Src/ansi_S.d ./Src/ansi_S.o ./Src/main.d ./Src/main.o ./Src/rocet.d ./Src/rocet.o ./Src/syscalls.d ./Src/syscalls.o ./Src/sysmem.d ./Src/sysmem.o ./Src/system_stm32f30x.d ./Src/system_stm32f30x.o ./Src/timer.d ./Src/timer.o
-=======
 	-$(RM) ./Src/30010_io.d ./Src/30010_io.o ./Src/GameScreen.d ./Src/GameScreen.o ./Src/Joystick.d ./Src/Joystick.o ./Src/LCD.d ./Src/LCD.o ./Src/LCDgameplay.d ./Src/LCDgameplay.o ./Src/LED.d ./Src/LED.o ./Src/ansi_S.d ./Src/ansi_S.o ./Src/astroid.d ./Src/astroid.o ./Src/buzzer.d ./Src/buzzer.o ./Src/charset.d ./Src/charset.o ./Src/main.d ./Src/main.o ./Src/menu.d ./Src/menu.o ./Src/rocet.d ./Src/rocet.o ./Src/screen.d ./Src/screen.o ./Src/syscalls.d ./Src/syscalls.o ./Src/sysmem.d ./Src/sysmem.o ./Src/system_stm32f30x.d ./Src/system_stm32f30x.o ./Src/timer.d ./Src/timer.o ./Src/window.d ./Src/window.o
->>>>>>> Stashed changes
 
 .PHONY: clean-Src
 
