@@ -1,5 +1,6 @@
 #include "ansi_S.h"
 #include "joystick.h"
+#include "LCD.h"
 void startWindow(int x1, int y1, int x2, int y2) {
 
 //TOP
@@ -1135,6 +1136,7 @@ void duckExplotion(int x, int y, int *ud, int *rl){
 	printf("%c",32);
 	}
 	resetbgcolor();
+	score -= 50;
 	}
 
 

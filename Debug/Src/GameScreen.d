@@ -29,7 +29,9 @@ Src/GameScreen.o: ../Src/GameScreen.c \
  C:/Users/Emilo/OneDrive/Skrivebord/Game/SPL/inc/stm32f30x_usart.h \
  C:/Users/Emilo/OneDrive/Skrivebord/Game/SPL/inc/stm32f30x_wwdg.h \
  C:/Users/Emilo/OneDrive/Skrivebord/Game/SPL/inc/stm32f30x_misc.h \
- C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/joystick.h
+ C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/joystick.h \
+ C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/LCD.h \
+ C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/charset.h
 
 C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/ansi_S.h:
 
@@ -92,3 +94,7 @@ C:/Users/Emilo/OneDrive/Skrivebord/Game/SPL/inc/stm32f30x_wwdg.h:
 C:/Users/Emilo/OneDrive/Skrivebord/Game/SPL/inc/stm32f30x_misc.h:
 
 C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/joystick.h:
+
+C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/LCD.h:
+
+C:/Users/Emilo/OneDrive/Skrivebord/Game/Inc/charset.h:
