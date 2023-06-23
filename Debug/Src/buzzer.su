@@ -1,0 +1,4 @@
+buzzer.c:6:6:initBuzz	8	static
+buzzer.c:29:6:updateBuzz	4	static
+buzzer.c:53:6:playTone	24	static
+buzzer.c:336:6:setFreq	24	static

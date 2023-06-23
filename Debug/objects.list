@@ -27,6 +27,7 @@
 "./Src/ansi_S.o"
 "./Src/main.o"
 "./Src/rocet.o"
+"./Src/screen.o"
 "./Src/syscalls.o"
 "./Src/sysmem.o"
 "./Src/system_stm32f30x.o"

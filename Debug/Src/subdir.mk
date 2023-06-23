@@ -12,6 +12,7 @@ C_SRCS += \
 ../Src/ansi_S.c \
 ../Src/main.c \
 ../Src/rocet.c \
+../Src/screen.c \
 ../Src/syscalls.c \
 ../Src/sysmem.c \
 ../Src/system_stm32f30x.c \
@@ -25,6 +26,7 @@ OBJS += \
 ./Src/ansi_S.o \
 ./Src/main.o \
 ./Src/rocet.o \
+./Src/screen.o \
 ./Src/syscalls.o \
 ./Src/sysmem.o \
 ./Src/system_stm32f30x.o \
@@ -38,6 +40,7 @@ C_DEPS += \
 ./Src/ansi_S.d \
 ./Src/main.d \
 ./Src/rocet.d \
+./Src/screen.d \
 ./Src/syscalls.d \
 ./Src/sysmem.d \
 ./Src/system_stm32f30x.d \
@@ -51,7 +54,11 @@ Src/%.o: ../Src/%.c Src/subdir.mk
 clean: clean-Src
 
 clean-Src:
+<<<<<<< Updated upstream
 	-$(RM) ./Src/30010_io.d ./Src/30010_io.o ./Src/GameScreen.d ./Src/GameScreen.o ./Src/Joystick.d ./Src/Joystick.o ./Src/LED.d ./Src/LED.o ./Src/ansi_S.d ./Src/ansi_S.o ./Src/main.d ./Src/main.o ./Src/rocet.d ./Src/rocet.o ./Src/syscalls.d ./Src/syscalls.o ./Src/sysmem.d ./Src/sysmem.o ./Src/system_stm32f30x.d ./Src/system_stm32f30x.o ./Src/timer.d ./Src/timer.o
+=======
+	-$(RM) ./Src/30010_io.d ./Src/30010_io.o ./Src/GameScreen.d ./Src/GameScreen.o ./Src/Joystick.d ./Src/Joystick.o ./Src/LCD.d ./Src/LCD.o ./Src/LCDgameplay.d ./Src/LCDgameplay.o ./Src/LED.d ./Src/LED.o ./Src/ansi_S.d ./Src/ansi_S.o ./Src/astroid.d ./Src/astroid.o ./Src/buzzer.d ./Src/buzzer.o ./Src/charset.d ./Src/charset.o ./Src/main.d ./Src/main.o ./Src/menu.d ./Src/menu.o ./Src/rocet.d ./Src/rocet.o ./Src/screen.d ./Src/screen.o ./Src/syscalls.d ./Src/syscalls.o ./Src/sysmem.d ./Src/sysmem.o ./Src/system_stm32f30x.d ./Src/system_stm32f30x.o ./Src/timer.d ./Src/timer.o ./Src/window.d ./Src/window.o
+>>>>>>> Stashed changes
 
 .PHONY: clean-Src
 

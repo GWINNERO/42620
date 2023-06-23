@@ -38,7 +38,14 @@ void spaceship(int x1, int y1, int x2, int y2) {
 	}
 	bgcolor(5);
 	fgcolor(0);
+	if (Bup == 0){
 	printf("  UP  ");
+	}
+	if (Bup == 1) {
+		blink(1);
+	printf("! ! ! ");
+	blink(0);
+	}
 	bgcolor(0);
 	fgcolor(1);
 	for(int i = 0; i <20; i++) {
@@ -95,7 +102,39 @@ void spaceship(int x1, int y1, int x2, int y2) {
 	gotoxy(83,y1+2);
 	fgcolor(0);
 	bgcolor(7);
+	if(Bcanon == 0){
 	printf(" CANON   ");
+<<<<<<< Updated upstream
+=======
+	}
+	if(Bcanon == 1){
+		blink(1);
+		printf("! ! !    ");
+		blink(0);
+	}
+	if(Bship1 == 1){
+		bgcolor(1);
+		gotoxy(x1+55,y1);
+		blink(1);
+		printf("! ! ! ");
+		blink(0);
+	}
+	if(Bship2 == 1){
+		bgcolor(1);
+		gotoxy(x1+44,y1+4);
+		blink(1);
+		printf("! ! ! ");
+		blink(0);
+	}
+	if(Bship3 == 1){
+		bgcolor(1);
+		gotoxy(x1+74,y1+4);
+		blink(1);
+		printf("! ! ! ");
+		blink(0);
+	}
+	resetbgcolor();
+>>>>>>> Stashed changes
 }
 
 void spaceshipDelete(int x1, int y1, int x2, int y2) {

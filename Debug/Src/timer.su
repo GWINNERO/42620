@@ -1,0 +1,14 @@
+<<<<<<< Updated upstream
+=======
+core_cm4.h:1071:22:NVIC_EnableIRQ	16	static
+core_cm4.h:1085:22:NVIC_DisableIRQ	16	static
+core_cm4.h:1156:22:NVIC_SetPriority	16	static
+timer.c:10:6:initTimer	8	static
+timer.c:22:6:initTimer2	8	static
+timer.c:47:6:TIM2_IRQHandler	4	static
+timer.c:54:6:initTimerStop	8	static
+timer.c:58:6:initTimerStart	8	static
+timer.c:62:6:TIM1_BRK_TIM15_IRQHandler	8	static
+timer.c:105:6:drawTime	2304	static
+timer.c:206:6:resetTime	4	static
+>>>>>>> Stashed changes

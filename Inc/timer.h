@@ -8,4 +8,6 @@ void initTimerStart();
 void initTimer2();
 void initBuzz();
 
+volatile uint16_t buzzTone;
+
 #endif /* TIMER_H_ */

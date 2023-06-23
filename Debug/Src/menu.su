@@ -1,0 +1,5 @@
+menu.c:5:6:menu	24	static
+menu.c:79:5:player_selection	16	static
+menu.c:113:5:difficulty	16	static
+menu.c:158:6:help_menu	8	static
+menu.c:169:6:draw_main_menu	8	static
