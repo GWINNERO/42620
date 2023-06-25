@@ -27,6 +27,7 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  00020090  2**0
                   CONTENTS, READONLY
+<<<<<<< Updated upstream
  12 .debug_info   00008abe  00000000  00000000  000200c0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  13 .debug_abbrev 0000161d  00000000  00000000  00028b7e  2**0
@@ -44,6 +45,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
  19 .comment      00000053  00000000  00000000  0008f97e  2**0
                   CONTENTS, READONLY
  20 .debug_frame  00002064  00000000  00000000  0008f9d4  2**2
+=======
+ 12 .debug_info   000132c9  00000000  00000000  000200c0  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 13 .debug_abbrev 000031d7  00000000  00000000  00033389  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 14 .debug_aranges 00000a48  00000000  00000000  00036560  2**3
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 15 .debug_ranges 000008c8  00000000  00000000  00036fa8  2**3
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 16 .debug_macro  00006159  00000000  00000000  00037870  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 17 .debug_line   0001002c  00000000  00000000  0003d9c9  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 18 .debug_str    0005ade9  00000000  00000000  0004d9f5  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 19 .comment      00000053  00000000  00000000  000a87de  2**0
+                  CONTENTS, READONLY
+ 20 .debug_frame  00003270  00000000  00000000  000a8834  2**2
+>>>>>>> Stashed changes
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:

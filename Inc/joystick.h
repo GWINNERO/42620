@@ -15,7 +15,11 @@ typedef struct{
 } copyJoy_s;
 
 
+<<<<<<< Updated upstream
 
+=======
+volatile reJoy_s key;
+>>>>>>> Stashed changes
 volatile reJoy_s joy;
 volatile copyJoy_s CJoy;
 
